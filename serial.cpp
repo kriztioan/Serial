@@ -5,9 +5,6 @@
  *  @date   2021-07-17
  *  @note   BSD-3 licensed
  *
- *  Compile with:
- *    g++ -O3 serial.c -o serial
- *
  ***********************************************/
 
 #include "Serial.h"

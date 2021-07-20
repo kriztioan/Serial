@@ -27,6 +27,22 @@ while (true) {
 }
 ```
 
+## Demo Program
+
+A simple serial monitor demo program is provided in `serial.cpp` and can be compiled with:
+
+```shell
+make
+```
+
+This results in a binary executable called `serial` that can be run as:
+
+```shell
+./serial /dev/cu.usbmodem14301 115200
+```
+
+The first and second command line parameter take the serial port and baud rate, respectively.
+
 ## Notes
 
 1. The class assumes the most common serial configuration of `no parity bit`, `no stop bit`, `8 bits per byte`, and `no RTS/CTS hardware flow control`. These are hardcoded in `Serial.h`, but can be modified when needed.
