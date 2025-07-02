@@ -1,13 +1,18 @@
-PROG:=serial
+PROGS:=serial
 CPP_FILES:=$(wildcard *.cpp)
 OBJ_FILES:=$(patsubst %.cpp,%.o,$(CPP_FILES))
-CPPFLAGS:=-O3
+DEP_FILES:=deps.d
+CPPFLAGS:=-O3 -MMD -MF $(DEP_FILES)
 
-$(PROG): $(OBJ_FILES)
-	$(CXX) -o $(PROG) $(OBJ_FILES)
+all: $(PROGS)
+
+-include $(DEP_FILES)
+
+$(PROGS): $(OBJ_FILES)
+	$(CXX) -o $(PROGS) $(OBJ_FILES) $(CPPFLAGS)
 
 %.o: %.cpp
 	$(CXX) -c $< $(CPPFLAGS)
 
 clean:
-	$(RM) *.o $(PROG)
+	$(RM) $(DEP_FILES) $(OBJ_FILES) $(PROGS)
